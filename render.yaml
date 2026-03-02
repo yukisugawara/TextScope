@@ -3,7 +3,7 @@ services:
     name: textscope-api
     runtime: python
     buildCommand: >
-      pip install -r backend/requirements.txt &&
+      pip install --no-cache-dir -r backend/requirements.txt &&
       python -m spacy download en_core_web_sm
     startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
