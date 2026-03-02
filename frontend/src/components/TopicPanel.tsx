@@ -29,7 +29,7 @@ interface Props {
   onSelectWord: (word: string) => void
 }
 
-type TopicMethod = 'lda' | 'nmf' | 'bertopic'
+type TopicMethod = 'lda' | 'nmf'
 
 export default function TopicPanel({ text, selectedWord, onSelectWord }: Props) {
   const { t } = useLocale()
@@ -39,7 +39,6 @@ export default function TopicPanel({ text, selectedWord, onSelectWord }: Props) 
   const [loading, setLoading] = useState(false)
   const [nTopics, setNTopics] = useState(5)
   const [method, setMethod] = useState<TopicMethod>('lda')
-  const [methodError, setMethodError] = useState<string | null>(null)
   const [hoveredMethod, setHoveredMethod] = useState<TopicMethod | null>(null)
   const [activeTopic, setActiveTopic] = useState<number | null>(null)
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
@@ -104,23 +103,13 @@ export default function TopicPanel({ text, selectedWord, onSelectWord }: Props) 
   const fetchTopics = useCallback(() => {
     if (!text) return
     setLoading(true)
-    setMethodError(null)
     apiFetch('/api/topics', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text, n_topics: nTopics, top_n_words: 10, method }),
     })
-      .then((r) => {
-        if (r.status === 501) {
-          setMethodError(t('topics.bertopicNotInstalled'))
-          setTopics([])
-          setDocs([])
-          return null
-        }
-        return r.json()
-      })
+      .then((r) => r.json())
       .then((data) => {
-        if (!data) return
         setTopics(data.topics || [])
         setDocs(data.documents || [])
         setActiveTopic(null)
@@ -149,7 +138,7 @@ export default function TopicPanel({ text, selectedWord, onSelectWord }: Props) 
       <div className="relative">
       <div className="flex items-center gap-3 px-4 py-2 border-b border-white/10 shrink-0 flex-wrap">
         <div className="flex items-center gap-1">
-          {(['lda', 'nmf', 'bertopic'] as const).map((m) => (
+          {(['lda', 'nmf'] as const).map((m) => (
             <button
               key={m}
               onClick={() => setMethod(m)}
@@ -312,19 +301,13 @@ export default function TopicPanel({ text, selectedWord, onSelectWord }: Props) 
       )}
       </div>
 
-      {methodError && (
-        <div className="px-4 py-2 text-xs text-amber-400 bg-amber-400/10 border-b border-amber-400/20">
-          {methodError}
-        </div>
-      )}
-
       {loading ? (
         <div className="flex-1 flex items-center justify-center">
           <div className="h-6 w-6 animate-spin rounded-full border-[3px] border-violet-500 border-r-transparent" />
         </div>
       ) : topics.length === 0 ? (
         <div className="flex-1 flex items-center justify-center text-white/20 text-sm">
-          {!methodError && t('topics.noData')}
+          {t('topics.noData')}
         </div>
       ) : (
         <div className="flex-1 min-h-0 flex" ref={chartRef}>
