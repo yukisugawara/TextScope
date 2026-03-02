@@ -131,8 +131,9 @@ export default function App() {
   const [codingRunning, setCodingRunning] = useState(false)
   const [trackedConcepts, setTrackedConcepts] = useState<string[]>([])
 
-  // --- help modal ---
+  // --- help / about modals ---
   const [helpOpen, setHelpOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
 
   // --- samples ---
   const [samples, setSamples] = useState<SampleItem[]>([])
@@ -546,18 +547,28 @@ export default function App() {
           </div>
         </main>
 
-        {/* ── Help button (bottom-left) ── */}
-        <button
-          onClick={() => setHelpOpen(true)}
-          className="fixed bottom-5 left-5 z-30 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-white/40 hover:text-white border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-colors cursor-pointer"
-          style={{ animation: 'fade-in-up 0.5s ease-out 2.5s both' }}
-        >
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <circle cx="12" cy="12" r="10" />
-            <path strokeLinecap="round" d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" />
-          </svg>
-          Help
-        </button>
+        {/* ── Help & About buttons (bottom-left) ── */}
+        <div className="fixed bottom-5 left-5 z-30 flex gap-2" style={{ animation: 'fade-in-up 0.5s ease-out 2.5s both' }}>
+          <button
+            onClick={() => setHelpOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-white/40 hover:text-white border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-colors cursor-pointer"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <circle cx="12" cy="12" r="10" />
+              <path strokeLinecap="round" d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" />
+            </svg>
+            Help
+          </button>
+          <button
+            onClick={() => setAboutOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-white/40 hover:text-white border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-colors cursor-pointer"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+            </svg>
+            About
+          </button>
+        </div>
 
         {/* ── CSV record picker modal ── */}
         {csvPickerFile && (() => {
@@ -578,6 +589,8 @@ export default function App() {
 
         {/* ── Help modal ── */}
         {helpOpen && <HelpModal onClose={() => setHelpOpen(false)} t={t} />}
+        {/* ── About modal ── */}
+        {aboutOpen && <AboutModal onClose={() => setAboutOpen(false)} t={t} />}
       </div>
     )
   }
@@ -909,20 +922,33 @@ export default function App() {
         )
       })()}
 
-      {/* ── Help button (bottom-left) ── */}
-      <button
-        onClick={() => setHelpOpen(true)}
-        className="fixed bottom-5 left-5 z-30 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-white/40 hover:text-white border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-colors cursor-pointer"
-      >
-        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <circle cx="12" cy="12" r="10" />
-          <path strokeLinecap="round" d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" />
-        </svg>
-        Help
-      </button>
+      {/* ── Help & About buttons (bottom-left) ── */}
+      <div className="fixed bottom-5 left-5 z-30 flex gap-2">
+        <button
+          onClick={() => setHelpOpen(true)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-white/40 hover:text-white border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-colors cursor-pointer"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <circle cx="12" cy="12" r="10" />
+            <path strokeLinecap="round" d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" />
+          </svg>
+          Help
+        </button>
+        <button
+          onClick={() => setAboutOpen(true)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-white/40 hover:text-white border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-colors cursor-pointer"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+          </svg>
+          About
+        </button>
+      </div>
 
       {/* ── Help modal ── */}
       {helpOpen && <HelpModal onClose={() => setHelpOpen(false)} t={t} />}
+      {/* ── About modal ── */}
+      {aboutOpen && <AboutModal onClose={() => setAboutOpen(false)} t={t} />}
     </div>
   )
 }
@@ -1096,6 +1122,95 @@ function HelpModal({ onClose, t }: { onClose: () => void; t: (key: any) => strin
             className="text-[11px] text-white/50 hover:text-white border border-white/15 px-4 py-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
           >
             {t('help.close')}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const ABOUT_FEATURES: { key: string; icon: string }[] = [
+  { key: 'freq', icon: 'M3 3v18h18M9 17V9m4 8V5m4 12v-4' },
+  { key: 'kwic', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' },
+  { key: 'cloud', icon: 'M2 15c0-3 2.5-6 6-6 .5-3 3-5 6-5s5.5 2 6 5c2.5.5 4 2.5 4 5 0 3-2 4-4 4H6c-2.5 0-4-1.5-4-3z' },
+  { key: 'trends', icon: 'M3 17l6-6 4 4L21 7' },
+  { key: 'cooccurrence', icon: 'M12 4.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4.5 14.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM19.5 14.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM12 9.5v2m-5 5.5l3.5-3m3 0l3.5 3' },
+  { key: 'correspondence', icon: 'M3.75 3.75v16.5h16.5M7.5 14.25L12 9l3 3 4.5-4.5' },
+  { key: 'cluster', icon: 'M9 6h11M9 12h11M9 18h11M5 6h.01M5 12h.01M5 18h.01' },
+  { key: 'topics', icon: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z' },
+  { key: 'w2v', icon: 'M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 8.25V6zm0 9.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6z' },
+  { key: 'coding', icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6' },
+  { key: 'compare', icon: 'M9 5H2v14h7M15 5h7v14h-7M12 3v18' },
+]
+
+function AboutModal({ onClose, t }: { onClose: () => void; t: (key: any) => string }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: 'var(--overlay-bg)' }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
+    >
+      <div
+        className="w-full max-w-3xl max-h-[85vh] bg-[var(--dropdown-bg)] border border-white/15 rounded-2xl shadow-2xl flex flex-col overflow-hidden modal-glow"
+        style={{ animation: 'fade-in-scale 0.25s ease-out both' }}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 shrink-0">
+          <h2 className="text-lg font-bold bg-gradient-to-r from-violet-400 to-pink-400" style={{ WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent' }}>
+            {t('about.title')}
+          </h2>
+          <button
+            onClick={onClose}
+            className="text-white/40 hover:text-white transition-colors cursor-pointer p-1"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
+          {/* Intro */}
+          <p className="text-sm text-white/60 leading-relaxed">{t('about.intro')}</p>
+
+          {/* Features */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/80 mb-3">{t('about.features')}</h3>
+            <div className="space-y-2">
+              {ABOUT_FEATURES.map((f) => (
+                <div key={f.key} className="flex gap-3 items-start">
+                  <div className="shrink-0 w-7 h-7 rounded-lg bg-violet-500/15 flex items-center justify-center mt-0.5">
+                    <svg className="w-3.5 h-3.5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d={f.icon} />
+                    </svg>
+                  </div>
+                  <p className="text-xs text-white/50 leading-relaxed pt-1">{t(`about.${f.key}` as any)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Getting Started */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/80 mb-1">{t('about.start')}</h3>
+            <p className="text-xs text-white/50 leading-relaxed">{t('about.startDesc')}</p>
+          </div>
+
+          {/* Supported Formats */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/80 mb-1">{t('about.formats')}</h3>
+            <p className="text-xs text-white/50 leading-relaxed">{t('about.formatsDesc')}</p>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="px-6 py-3 border-t border-white/10 shrink-0 text-right">
+          <button
+            onClick={onClose}
+            className="text-[11px] text-white/50 hover:text-white border border-white/15 px-4 py-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+          >
+            {t('about.close')}
           </button>
         </div>
       </div>
