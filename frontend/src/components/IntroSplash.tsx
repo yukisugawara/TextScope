@@ -16,7 +16,7 @@ const DOTS = Array.from({ length: 24 }, (_, i) => ({
 
 interface IntroSplashProps {
   onComplete: () => void
-  t: (key: string) => string
+  t: (key: any) => string
 }
 
 export default function IntroSplash({ onComplete, t }: IntroSplashProps) {

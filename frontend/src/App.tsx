@@ -936,7 +936,7 @@ function ErrorBanner({ message }: { message: string }) {
 }
 
 function CsvRecordModal({
-  filename,
+  filename: _filename,
   label,
   records,
   search,
@@ -952,7 +952,7 @@ function CsvRecordModal({
   onSearchChange: (v: string) => void
   onSelect: (index: number) => void
   onClose: () => void
-  t: (key: string) => string
+  t: (key: any) => string
 }) {
   const filtered = records
     ? records.filter((r) => {
@@ -1046,7 +1046,7 @@ const HELP_SECTIONS: { key: string; icon: string }[] = [
   { key: 'compare', icon: 'M9 5H2v14h7M15 5h7v14h-7M12 3v18' },
 ]
 
-function HelpModal({ onClose, t }: { onClose: () => void; t: (key: string) => string }) {
+function HelpModal({ onClose, t }: { onClose: () => void; t: (key: any) => string }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"

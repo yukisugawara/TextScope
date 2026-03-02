@@ -31,11 +31,6 @@ function getLeafOrder(node: TreeNode): string[] {
   return node.children.flatMap(getLeafOrder)
 }
 
-const EMO_COLORS = [
-  '#a855f7', '#ec4899', '#2dd4bf', '#f472b6', '#818cf8',
-  '#fb923c', '#34d399', '#fbbf24', '#c084fc', '#fb7185',
-]
-
 export default function ClusterPanel({ text, selectedWord, onSelectWord }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -65,8 +60,7 @@ export default function ClusterPanel({ text, selectedWord, onSelectWord }: Props
     canvas.style.width = `${W}px`
     canvas.style.height = `${H}px`
 
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    const ctx = canvas.getContext('2d')!
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.clearRect(0, 0, W, H)
 

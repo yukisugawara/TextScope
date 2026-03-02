@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import cytoscape from 'cytoscape'
 import { apiFetch } from '../api'
 import { useTheme } from '../theme'
@@ -98,16 +98,6 @@ export default function CooccurrencePanel({ text, selectedWord, onSelectWord }: 
   }, [])
 
   const hideTooltip = useCallback(() => setTooltip(null), [])
-
-  const maxVals = useMemo(() => {
-    const nodes = dataRef.current?.nodes
-    if (!nodes || nodes.length === 0) return { degree: 1, betweenness: 1, closeness: 1 }
-    return {
-      degree: Math.max(...nodes.map(n => n.degree), 1e-9),
-      betweenness: Math.max(...nodes.map(n => n.betweenness), 1e-9),
-      closeness: Math.max(...nodes.map(n => n.closeness), 1e-9),
-    }
-  }, [dataRef.current?.nodes])
 
   // Fetch & render
   useEffect(() => {

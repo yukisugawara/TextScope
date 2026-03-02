@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { apiFetch } from '../api'
 import { useLocale } from '../i18n'
 import {
@@ -29,13 +29,14 @@ interface Props {
   onRemoveConcept?: (name: string) => void
 }
 
-type DataPoint = { segment: string } & Record<string, number>
+type DataPoint = { segment: string } & Record<string, string | number>
 
 export default function TrendsPanel({
   text, trackedWords, onToggleTrack, selectedWord, onSelectWord,
   conceptSeries = [], onRemoveConcept,
 }: Props) {
   const { t } = useLocale()
+  const chartRef = useRef<HTMLDivElement>(null)
   const [data, setData] = useState<DataPoint[]>([])
   const allKeys = [...trackedWords, ...conceptSeries.map((c) => c.name)]
 

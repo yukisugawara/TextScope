@@ -364,7 +364,7 @@ export default function TopicPanel({ text, selectedWord, onSelectWord }: Props) 
                           backdropFilter: 'blur(12px)',
                           color: 'var(--chart-text)',
                         }}
-                        formatter={(v: number) => [v.toFixed(2), t('topics.weight')]}
+                        formatter={(v: number | undefined) => [(v ?? 0).toFixed(2), t('topics.weight')]}
                       />
                       <Bar
                         dataKey="weight"

@@ -31,7 +31,7 @@ function splitByKeyword(text: string, keyword: string, lang: string): Segment[] 
     }))
 }
 
-export default function ReaderPanel({ text, filename, charCount, highlightWord, language }: Props) {
+export default function ReaderPanel({ text, highlightWord, language }: Props) {
   const { t } = useLocale()
   const segments = useMemo(
     () => splitByKeyword(text, highlightWord, language),
