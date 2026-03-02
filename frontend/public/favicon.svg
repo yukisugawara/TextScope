@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#2dd4bf"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#0f0f1a"/>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#g1)" opacity="0.15"/>
+  <!-- Magnifying glass body -->
+  <circle cx="58" cy="56" r="26" fill="none" stroke="url(#g1)" stroke-width="7" stroke-linecap="round"/>
+  <!-- Glass handle -->
+  <line x1="77" y1="75" x2="100" y2="98" stroke="url(#g1)" stroke-width="7" stroke-linecap="round"/>
+  <!-- Text lines inside lens -->
+  <line x1="43" y1="46" x2="68" y2="46" stroke="url(#g2)" stroke-width="4" stroke-linecap="round"/>
+  <line x1="43" y1="56" x2="73" y2="56" stroke="url(#g2)" stroke-width="4" stroke-linecap="round"/>
+  <line x1="43" y1="66" x2="61" y2="66" stroke="url(#g2)" stroke-width="4" stroke-linecap="round"/>
+  <!-- Sparkle -->
+  <circle cx="98" cy="24" r="4" fill="#fbbf24"/>
+  <circle cx="24" cy="96" r="3" fill="#a855f7" opacity="0.7"/>
+  <circle cx="108" cy="52" r="2.5" fill="#ec4899" opacity="0.6"/>
+</svg>
