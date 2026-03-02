@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<!-- #BeginTemplate "../master.dwt" -->
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<!-- #BeginEditable "doctitle" -->
+<title>秋桜舎の作品</title>
+<!-- #EndEditable -->
+   <meta name="author" content="Yamamoto Yuji, 山本ゆうじ"/>
+<meta name="description" content="企業の文書・翻訳体制を改善する言語・翻訳コンサルティング" />
+<link href="../css/style4.css" rel="stylesheet" type="text/css" />
+<link href="../favicon.ico" rel="SHORTCUT ICON" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46074177-1', 'cosmoshouse.com');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+
+
+<div id="container">
+
+	<div id="masthead">
+		<span class="site-name">秋桜舎</span>
+	</div>
+		<div id="website-description" style="left: 130px">
+			<h2 style="width: 530px">文学・芸術談義／翻訳</h2>
+		</div>
+
+
+	<div id="navigation">
+		<ul>
+			<li><a href="../index.htm">ホーム</a></li>
+			<li><a href="../about.htm">紹介</a></li>
+			<li><a href="../news.htm">ニュース</a></li>
+			<li><a href="index.htm">作品</a></li>
+			<li><a href="http://cosmoshouse.air-nifty.com/">ブログ</a></li>
+			<li><a href="http://bin.cosmoshouse.com/ym/y_mail.cgi?id=ch">連絡先</a></li>
+			<li><a href="http://twitter.com/yujich/">Twitter</a></li>
+					</ul>
+	</div>
+
+
+	<div id="content_container">
+
+		<div id="column_left">
+			<!-- #BeginEditable "sidebar" -->
+
+			<!-- #EndEditable -->
+						<div id="translation-box">
+			<p class="no-indent"><script src="http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/translatemypage.xml&amp;up_source_language=ja&amp;w=160&amp;h=60&amp;title=&amp;border=&amp;output=js"></script></p>
+		</div>
+</div>
+		<div id="column_main">
+			<!-- #BeginEditable "content" -->
+	<h2>秋桜舎の作品
+   </h2>
+			<p>
+			<a href="http://transpc.cosmoshouse.com" class="text-big">
+			実務翻訳</a></p>
+
+    <ul class="inpage-content-list">
+		<li>
+		<a href="#教育">教育</a>
+		</li>
+		<li>
+		<a href="#文芸翻訳 ">文芸翻訳 </a>
+
+		</li>
+		<li>
+		<a href="#論文">論文</a>
+		</li>
+		<li>
+		<b>翻訳関係の<a href="../news.htm">執筆リスト</a></b>
+		</li>
+    </ul>
+    <hr />
+
+
+    <table BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
+      <tbody>
+      <tr>
+        <td WIDTH="50%"><h2><a id="教育">教育</a></h2>
+
+        </td>
+        <td WIDTH="50%"><p ALIGN="right"></p>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <table border="0" cellspacing="1" width="100%" id="AutoNumber1" cellpadding="5">
+      <tbody>
+      <tr>
+        <td width="150"><p align="center"><a target="_blank" href="../images/uwc-book-cover.jpg"><img border="0" src="../images/uwc-book-cover-s.jpg" width="152" height="212" /></a></p>
+        </td>
+        <td>
+        <table border="6" cellspacing="1" width="100%" id="AutoNumber2" cellpadding="4">
+          <tbody>
+          <tr>
+            <td width="100%"><h2 ALIGN="center"><font SIZE="6"><b><a href="uwc-book/index.htm">
+			世界に通じる学校</a></b></font></h2>
+
+            <p CLASS="text-s" ALIGN="center"><font SIZE="4"><b>国際学校UWCの異文化理解教育</b></font></p>
+            <p CLASS="text-s" ALIGN="center"><font size="4">04/04/23 発売開始</font></p>
+            <p CLASS="text-s" ALIGN="center"><font color="#FF0000"><b><a href="uwc-book/index.htm">
+			詳細はこちら</a></b></font></p>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <hr />
+
+    <table BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
+      <tbody>
+      <tr>
+        <td WIDTH="50%"><h2><a id="文芸翻訳 ">文芸翻訳</a></h2>
+
+        </td>
+        <td WIDTH="50%"><p ALIGN="right"><b>実務翻訳は<a href="http://transpc.cosmoshouse.com/">transPC</a>へどうぞ</b></p>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+    <p class="text-s" align="left"><b>O・ヘンリー 「<a href="loaves/index.htm">魔女のパン</a>」
+	（2002/5/17）</b></p>
+    <ul>
+      <li>
+      <h4>福岡の放送局「<a target="_blank" href="http://rkbr.jp/">RKB毎日放送</a>」「<a target="_blank" href="http://rkbr.jp/hondana/index.html">おしゃべり本棚</a>」で朗読<br />
+      <span style="font-weight: 400">2003年12月6日土曜日、17時20分～17時35分放送<br />
+      2003年12月13日土曜日、17時20分～17時35分放送</span></h4>
+      </li>
+    </ul>
+    <p class="text-s">
+	本作品が朗読されます。残念ながら九州、中国地方の方しか聞けませんが、効果音やBGMも入る本格的なものです。（03/11/19）</p>
+    <hr color="#000000" width="70%" />
+
+    <p class="text-s">ドイル<b>「悪魔の足をめぐる冒険」&nbsp; (2001/3/7) </b></p>
+    <hr color="#000000" width="70%" />
+
+    <p class="text-s">ドイル『シャーロック・ホームズの帰還』から<b>「踊る小人をめぐる冒険」</b> </p>
+    <p class="text-s">（現在は非公開）</p>
+    <p class="text-s">
+	例のごとく怪しげな化学実験をしていたホームズ。出し抜けにワトスンをあっと驚かせるようなことを言った……。ドイル自身によるホームズ短編ベスト十二選中第三位。1903年12月発表。</p>
+    <hr color="#000000" width="70%" />
+
+    <p CLASS="text-s">キプリング 『ジャングル・ブック』 から<b><a href="jungle/index.htm">「モウグリの兄弟たち｣</a></b>(02/06/09)
+	縦書き版も追加</p>
+    <p CLASS="text"><b><font SIZE="3">インド北西部、セオニの丘。</font></b><font SIZE="2">若い狼一家の前に現れた不思議な褐色の生き物は素っ裸だった……（青空文庫収録）</font></p>
+    <hr color="#000000" width="70%" />
+
+    <p CLASS="text-s">ドイル『シャーロック・ホームズの冒険』から <b><a href="speckled/index.htm">
+	「まだらの紐をめぐる冒険」</a></b></p>
+    <p CLASS="text-s">縦書き版を追加しました（IE 5.5以上）</p>
+    <p CLASS="text"><b><font SIZE="3">1883年、春のロンドン。</font></b><font size="2">早朝にたたき起こされたホームズたち。黒服の若い婦人
+	が語る、古屋敷で起きた事件とは？ （青空文庫、アスキー刊『Palmシリーズ最強化パック1000』収録）</font></p>
+    <hr color="#000000" width="70%" />
+
+    <p CLASS="text-s">太宰治「清貧譚」英訳 <i><a HREF="poverty/index.htm"><b>A Tale of
+	Honorable Poverty</b></a></i><b><a HREF="poverty/index.htm"> </a></b></p>
+    <p CLASS="text-s"><font SIZE="2">
+	&nbsp;崩れてゆく男の誇り……そして、幸せになってしまう。中国の怪異譚集『聊斎志異』に取材した作品。押しかけ女房のもたらす幸福に対し、清貧を貫こうと痩せ我慢をする才之助だったが……やさしい英語の短いお話なので、気軽に読めます。（青空文庫収録）</font></p>
+    <hr />
+
+    <table BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
+      <tbody>
+      <tr>
+        <td WIDTH="50%"><h2><a id="論文">論文</a></h2>
+
+        </td>
+        <td WIDTH="50%"><p ALIGN="right"></p>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <p CLASS="text-s">修士論文 <a href="papers/index.htm">『日常の美学 －モダニズムと「いき」』 </a>
+	その他シカゴ時代に書いたもの。</p>
+
+
+
+			<!-- #EndEditable --></div>
+
+
+		<div id="footer">
+			<div id="copyright">
+				<p>Copyright (C) 1999-2014 秋桜舎 All Rights Reserved.</p>
+			</div>
+			<p><a href="../tools/index.htm">道具箱</a>
+			| <a href="../mag.htm">メルマガ</a> |
+			<a href="http://bin.cosmoshouse.com/ym/y_mail.cgi?id=ch">連絡先</a></p>
+		</div>
+		</div>
+	</div>
+
+
+
+
+
+</body>
+
+<!-- #EndTemplate -->
+
+</html>
