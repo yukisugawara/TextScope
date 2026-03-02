@@ -18,7 +18,7 @@ jobs:
           node-version: 20
       - run: cd frontend && npm ci && npm run build
         env:
-          VITE_API_BASE: https://textscope-api.onrender.com
+          VITE_API_BASE: https://textscope-dcyu.onrender.com
       - uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/dist
