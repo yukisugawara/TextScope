@@ -135,6 +135,37 @@ export default function App() {
   const [helpOpen, setHelpOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
 
+  // --- password gate (upload / sample load) ---
+  const [unlocked, setUnlocked] = useState(() =>
+    sessionStorage.getItem('textscope-unlocked') === '1'
+  )
+  const [passwordOpen, setPasswordOpen] = useState(false)
+  const pendingActionRef = useRef<(() => void) | null>(null)
+  const requireUnlock = useCallback((action: () => void) => {
+    if (unlocked) {
+      action()
+    } else {
+      pendingActionRef.current = action
+      setPasswordOpen(true)
+    }
+  }, [unlocked])
+  const handlePasswordSubmit = useCallback((value: string) => {
+    if (value === 'hakkou') {
+      setUnlocked(true)
+      sessionStorage.setItem('textscope-unlocked', '1')
+      setPasswordOpen(false)
+      const next = pendingActionRef.current
+      pendingActionRef.current = null
+      if (next) next()
+      return true
+    }
+    return false
+  }, [])
+  const handlePasswordCancel = useCallback(() => {
+    pendingActionRef.current = null
+    setPasswordOpen(false)
+  }, [])
+
   // --- samples ---
   const [samples, setSamples] = useState<SampleItem[]>([])
   const [sampleMenuOpen, setSampleMenuOpen] = useState(false)
@@ -300,7 +331,7 @@ export default function App() {
     setError('')
   }, [])
 
-  const upload = useCallback(async (file: File) => {
+  const doUpload = useCallback(async (file: File) => {
     setLoading(true)
     setError('')
 
@@ -321,7 +352,11 @@ export default function App() {
     }
   }, [addDocument])
 
-  const loadSample = useCallback(async (sampleFilename: string) => {
+  const upload = useCallback((file: File) => {
+    requireUnlock(() => { doUpload(file) })
+  }, [requireUnlock, doUpload])
+
+  const doLoadSample = useCallback(async (sampleFilename: string) => {
     setSampleMenuOpen(false)
     setAddMenuOpen(false)
     setLoading(true)
@@ -342,6 +377,10 @@ export default function App() {
     }
   }, [addDocument])
 
+  const loadSample = useCallback((sampleFilename: string) => {
+    requireUnlock(() => { doLoadSample(sampleFilename) })
+  }, [requireUnlock, doLoadSample])
+
   const openCsvPicker = useCallback((filename: string) => {
     setSampleMenuOpen(false)
     setAddMenuOpen(false)
@@ -356,7 +395,7 @@ export default function App() {
     }
   }, [recordCache])
 
-  const loadSampleRecord = useCallback(async (sampleFilename: string, recordIndex: number) => {
+  const doLoadSampleRecord = useCallback(async (sampleFilename: string, recordIndex: number) => {
     setCsvPickerFile(null)
     setRecordSearch('')
     setLoading(true)
@@ -376,6 +415,10 @@ export default function App() {
       setLoading(false)
     }
   }, [addDocument])
+
+  const loadSampleRecord = useCallback((sampleFilename: string, recordIndex: number) => {
+    requireUnlock(() => { doLoadSampleRecord(sampleFilename, recordIndex) })
+  }, [requireUnlock, doLoadSampleRecord])
 
   const handleSelectWord = useCallback((word: string) => {
     const next = word === selectedWord ? '' : word
@@ -591,6 +634,10 @@ export default function App() {
         {helpOpen && <HelpModal onClose={() => setHelpOpen(false)} t={t} />}
         {/* ── About modal ── */}
         {aboutOpen && <AboutModal onClose={() => setAboutOpen(false)} t={t} />}
+        {/* ── Password modal ── */}
+        {passwordOpen && (
+          <PasswordModal onSubmit={handlePasswordSubmit} onClose={handlePasswordCancel} t={t} />
+        )}
       </div>
     )
   }
@@ -949,6 +996,10 @@ export default function App() {
       {helpOpen && <HelpModal onClose={() => setHelpOpen(false)} t={t} />}
       {/* ── About modal ── */}
       {aboutOpen && <AboutModal onClose={() => setAboutOpen(false)} t={t} />}
+      {/* ── Password modal ── */}
+      {passwordOpen && (
+        <PasswordModal onSubmit={handlePasswordSubmit} onClose={handlePasswordCancel} t={t} />
+      )}
     </div>
   )
 }
@@ -1214,6 +1265,88 @@ function AboutModal({ onClose, t }: { onClose: () => void; t: (key: any) => stri
           </button>
         </div>
       </div>
+    </div>
+  )
+}
+
+function PasswordModal({
+  onSubmit,
+  onClose,
+  t,
+}: {
+  onSubmit: (value: string) => boolean
+  onClose: () => void
+  t: (key: any) => string
+}) {
+  const [value, setValue] = useState('')
+  const [wrong, setWrong] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const ok = onSubmit(value)
+    if (!ok) {
+      setWrong(true)
+      setValue('')
+    }
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+      style={{ background: 'var(--overlay-bg)' }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-sm bg-[var(--dropdown-bg)] border border-white/15 rounded-2xl shadow-2xl flex flex-col overflow-hidden modal-glow"
+        style={{ animation: 'fade-in-scale 0.25s ease-out both' }}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+          <h2 className="text-base font-bold bg-gradient-to-r from-violet-400 to-pink-400" style={{ WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent' }}>
+            {t('password.title')}
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-white/40 hover:text-white transition-colors cursor-pointer p-1"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="px-6 py-5 space-y-3">
+          <p className="text-xs text-white/55 leading-relaxed">{t('password.prompt')}</p>
+          <input
+            type="password"
+            value={value}
+            onChange={(e) => { setValue(e.target.value); if (wrong) setWrong(false) }}
+            placeholder={t('password.placeholder')}
+            className="w-full text-sm px-4 py-2.5 rounded-lg bg-white/8 border border-white/10 text-white/80 placeholder:text-white/30 outline-none focus:border-violet-400/50"
+            autoFocus
+          />
+          {wrong && (
+            <p className="text-[11px] text-rose-300">{t('password.wrong')}</p>
+          )}
+        </div>
+
+        <div className="px-6 py-3 border-t border-white/10 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-[11px] text-white/50 hover:text-white border border-white/15 px-4 py-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+          >
+            {t('password.cancel')}
+          </button>
+          <button
+            type="submit"
+            className="text-[11px] text-violet-300 hover:text-white border border-violet-400/30 hover:border-violet-300 px-4 py-1.5 rounded-lg bg-violet-500/15 hover:bg-violet-500/25 transition-colors cursor-pointer"
+          >
+            {t('password.submit')}
+          </button>
+        </div>
+      </form>
     </div>
   )
 }

@@ -190,6 +190,13 @@ const translations = {
     'about.formats': 'Supported Formats',
     'about.formatsDesc': '.txt, .md, .xml, .pdf — English & Japanese',
     'about.close': 'Close',
+    // Password gate
+    'password.title': 'Password required',
+    'password.prompt': 'A password is required to upload or analyse data. Site browsing remains free.',
+    'password.placeholder': 'Enter password',
+    'password.submit': 'Unlock',
+    'password.cancel': 'Cancel',
+    'password.wrong': 'Incorrect password.',
   },
   ja: {
     // App - landing
@@ -377,6 +384,13 @@ const translations = {
     'about.formats': '\u5bfe\u5fdc\u30d5\u30a9\u30fc\u30de\u30c3\u30c8',
     'about.formatsDesc': '.txt, .md, .xml, .pdf \u2014 \u82f1\u8a9e & \u65e5\u672c\u8a9e',
     'about.close': '\u9589\u3058\u308b',
+    // Password gate
+    'password.title': '\u30d1\u30b9\u30ef\u30fc\u30c9\u304c\u5fc5\u8981\u3067\u3059',
+    'password.prompt': '\u30c7\u30fc\u30bf\u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3084\u5206\u6790\u306b\u306f\u30d1\u30b9\u30ef\u30fc\u30c9\u304c\u5fc5\u8981\u3067\u3059\u3002\u30b5\u30a4\u30c8\u306e\u95b2\u89a7\u306f\u305d\u306e\u307e\u307e\u53ef\u80fd\u3067\u3059\u3002',
+    'password.placeholder': '\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u5165\u529b',
+    'password.submit': '\u89e3\u9664',
+    'password.cancel': '\u30ad\u30e3\u30f3\u30bb\u30eb',
+    'password.wrong': '\u30d1\u30b9\u30ef\u30fc\u30c9\u304c\u9055\u3044\u307e\u3059\u3002',
   },
 } as const
 
